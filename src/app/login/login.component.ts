@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,7 +9,15 @@ import { Component } from '@angular/core';
 export class LoginComponent {
     loginUserData = {};
 
+    constructor(private _auth: AuthService) {
+
+    }
+
     loginUser() {
-        console.log(this.loginUserData);
+        this._auth.loginUser(this.loginUserData)
+            .subscribe(
+                res => console.log(res),
+                err => console.log(err)
+            )
     }
 }
