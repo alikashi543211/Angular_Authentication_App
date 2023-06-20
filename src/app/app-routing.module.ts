@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -19,6 +20,11 @@ const routes: Routes = [
     {
         path: 'special',
         component: SpecialEventsComponent,
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'profile',
+        component: ProfileComponent,
         canActivate: [AuthGuard]
     },
     {

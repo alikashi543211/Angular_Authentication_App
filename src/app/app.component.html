@@ -10,10 +10,14 @@
             <li class="nav-item">
                 <a routerLink="/special" routerLinkActive="active" class="nav-link">Members</a>
             </li>
+            <li class="nav-item">
+                <a routerLink="/profile" routerLinkActive="active" class="nav-link">Profile</a>
+            </li>
         </ul>
         <ul class="navbar-nav">
-            <a routerLink="/login" class="nav-link" routerLinkActive="active">Login</a>
-            <a routerLink="/register" class="nav-link" routerLinkActive="active">Register</a>
+            <a routerLink="/login" class="nav-link" *ngIf="!_authService.loggedIn()" routerLinkActive="active">Login</a>
+            <a routerLink="/register" class="nav-link" *ngIf="!_authService.loggedIn()" routerLinkActive="active">Register</a>
+            <a style="cursor: pointer" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()" class="nav-link">Logout</a>
         </ul>
     </div>
 </nav>

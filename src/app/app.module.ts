@@ -11,6 +11,7 @@ import { EventsComponent } from './events/events.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
         RegisterComponent,
         LoginComponent,
         EventsComponent,
-        SpecialEventsComponent
+        SpecialEventsComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,
