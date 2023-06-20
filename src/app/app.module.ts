@@ -1,3 +1,4 @@
+import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthGuard } from './auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -9,7 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { EventsComponent } from './events/events.component';
 import { SpecialEventsComponent } from './special-events/special-events.component';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -23,9 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule,
+        HttpClientModule
     ],
-    providers: [AuthGuard],
+    providers: [AuthGuard, {
+        provide: HTTP_INTERCEPTORS,
+        useClass: TokenInterceptorService,
+        multi: true
+    }],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
